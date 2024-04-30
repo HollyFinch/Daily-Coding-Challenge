@@ -26,7 +26,7 @@ def findLongestStreak(arr):
 
     return longestStreak
 
-# Example usage:
+# the example they gave:
 arr = [100, 4, 200, 1, 3, 2]
 longest_streak = findLongestStreak(arr)
 print("Longest streak length:", longest_streak)
