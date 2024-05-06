@@ -1,33 +1,39 @@
-#first draft of SIERPINSKI TRIANGLE 📐
-
+#improved Sierpinski
 
 import turtle
 
-t = turtle.Turtle()
+def draw_triangle(t, size):
+    t.fillcolor("gold")
+    t.begin_fill()
+    for _ in range(3):
+        t.forward(size)
+        t.left(120)
+    t.end_fill()
 
-sideLength = 100
+def draw_sierpinski(t, size, depth):
+    if depth == 0:
+        draw_triangle(t, size)
+    else:
+        draw_sierpinski(t, size / 2, depth - 1)
+        t.forward(size / 2)
+        draw_sierpinski(t, size / 2, depth - 1)
+        t.backward(size / 2)
+        t.left(60)
+        t.forward(size / 2)
+        t.right(60)
+        draw_sierpinski(t, size / 2, depth - 1)
+        t.left(60)
+        t.backward(size / 2)
+        t.right(60)
 
-t.fillcolor("gold")
-t.begin_fill()
+def main():
+    t = turtle.Turtle()
+    t.speed(0)
+    t.penup()
+    t.goto(-150, -150)
+    t.pendown()
+    draw_sierpinski(t, 300, 3) 
+    turtle.done()
 
-for i in range(3):
-    t.left(120)
-    t.forward(sideLength)
-t.end_fill()
-
-t.fillcolor("white")
-t.begin_fill()
-
-t.left(180)
-t.forward(sideLength/2)
-
-t.right(60)
-t.forward(sideLength/2)
-
-for i in range(2):
-    t.right(120)
-    t.forward(sideLength/2)
-
-t.end_fill()
-
-turtle.done()
+if __name__ == "__main__":
+    main()
