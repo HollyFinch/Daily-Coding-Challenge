@@ -2,6 +2,8 @@
 
 import numpy as np
 
+dictionary = {'no':'no', 'yes':'yes'}
+
 crosswordMx = (['n','p'], ['o', 'k'])
 
 # for each letter I am going to find where its position is
