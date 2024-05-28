@@ -4,20 +4,19 @@ import numpy as np
 
 dictionary = {'no':'no', 'yes':'yes'}
 
-crosswordMx = (['n','p'], ['o', 'k'])
+crosswordMx = np.array([['n','p'], ['o', 'k']])
 
-# for each letter I am going to find where its position is
-check_element = 'k'
+for key, value in dictionary.items():
+    print(f"Key: {key}")
+    for letter in key:
+        check_element = letter
+        
+        letter_position = np.argwhere(crosswordMx == check_element)
 
-# Check if the element is in the top-left position
-in_Top_Left = crosswordMx[0][0] == check_element
-
-print(f"Element '{check_element}' in top-left:", in_Top_Left)
-
-in_Top_Row = check_element in crosswordMx[0]
-
-print(f"Element '{check_element}' in top row:", in_Top_Row)
-
-in_Bottom_Row = check_element in crosswordMx[1]
-
-print(f"Element '{check_element}' in bottom row:", in_Bottom_Row)
+        if letter_position.size > 0:
+            for position in letter_position:
+                row,col = position
+                print(f"Element '{check_element}' found at position: ({row}, {col})")
+        
+        else: print("not in my matrix")
+        
