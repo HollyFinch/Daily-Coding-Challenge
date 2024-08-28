@@ -26,15 +26,21 @@ do {
         echo "nope\n";
     } else {
         $input1 = readline("Please enter the first value: ");
-        $input2 = ($operator !== "root") ? readline("Please enter the second value: ") : null;
 
-        // Check if inputs are numbers
-        if (!is_numeric($input1) || ($operator !== "root" && !is_numeric($input2))) {
-            echo "nope\n";
+        // Check if input1 is a number
+        if (!is_numeric($input1)) {
+            echo "nope\n"; // Output "nope" immediately for non-numeric input1
         } else {
-            $result = calc($input1, $input2, $operator);
-            echo $result . "\n";
-            break;
+            $input2 = ($operator !== "root") ? readline("Please enter the second value: ") : null;
+
+            // Check if input2 is a number only if operator is not "root"
+            if ($operator !== "root" && !is_numeric($input2)) {
+                echo "nope\n";
+            } else {
+                $result = calc($input1, $input2, $operator);
+                echo $result . "\n";
+                break;
+            }
         }
     }
 } while (true);
