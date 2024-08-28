@@ -27,8 +27,14 @@ do {
     } else {
         $input1 = readline("Please enter the first value: ");
         $input2 = ($operator !== "root") ? readline("Please enter the second value: ") : null;
-        $result = calc($input1, $input2, $operator);
-        echo $result . "\n";
-        break;
+
+        // Check if inputs are numbers
+        if (!is_numeric($input1) || ($operator !== "root" && !is_numeric($input2))) {
+            echo "nope\n";
+        } else {
+            $result = calc($input1, $input2, $operator);
+            echo $result . "\n";
+            break;
+        }
     }
 } while (true);
